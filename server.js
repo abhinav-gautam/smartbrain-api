@@ -32,6 +32,6 @@ app.get('/profile/:id',(req,res)=>{profile.handleProfile(req,res,db)})
 app.put('/image',(req,res)=>{image.handleImage(req,res,db)})
 app.post('/imageurl',(req,res)=>{image.handleImageUrl(req,res)})
 
-app.listen(process.evnv.PORT||3000,()=>{
-	console.log(`This app is working nicely${PORT}`)
+app.listen(process.env.PORT||3000,()=>{
+	console.log(`This app is working nicely on port ${PORT}`)
 })
