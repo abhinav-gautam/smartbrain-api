@@ -7,7 +7,7 @@ const handleSignin=(req,res,db,bcrypt)=>{
 	.from('login')
 	.where('email',email)
 	.then(data=>{
-		if (data[0]===[]){
+		if (data[0].email===email){
 			return res.status(400).json('wrong credentials')
 		}
 		const isValid=bcrypt.compareSync(password, data[0].hash);
