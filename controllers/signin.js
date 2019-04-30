@@ -20,7 +20,7 @@ const handleSignin=(req,res,db,bcrypt)=>{
 			res.status(400).json('wrong credentials')
 		}
 	})
-	.catch(console.log)
+	.catch(res.status(400).json('unable to load'))
 
 }
 module.exports={
