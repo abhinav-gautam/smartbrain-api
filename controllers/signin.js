@@ -7,7 +7,7 @@ const handleSignin=(req,res,db,bcrypt)=>{
 	.from('login')
 	.where('email',email)
 	.then(data=>{
-		if (data===[]){
+		if (!data[0]){
 			return res.status(400).json('wrong credentials')
 		}
 		const isValid=bcrypt.compareSync(password, data[0].hash);
@@ -20,7 +20,9 @@ const handleSignin=(req,res,db,bcrypt)=>{
 			res.status(400).json('wrong credentials')
 		}
 	})
-	.catch(res.status(400).json('unable to load'))
+	.catch(err=>{
+		console.log(err)
+		res.status(400).json("Unable to register")})
 
 }
 module.exports={
