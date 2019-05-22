@@ -6,7 +6,7 @@ const app = new Clarifai.App({
 
 handleImageUrl=(req,res)=>{
 	app.models.predict(Clarifai.FACE_DETECT_MODEL,req.body.input)
-	.then(data=>res.json(data))
+	.then(data=>{res.json(data)})
 	.catch(err=>res.status(400).json("error in api"))
 }
 handleImage=(req,res,db)=>{
@@ -19,7 +19,7 @@ handleImage=(req,res,db)=>{
 		if(entry.length){
 			res.json(entry[0])
 		}else{
-			res.status(400).json("inavlid user")
+			res.status(400).json("inavlid image")
 		}
 	}) 
 	.catch(err=>res.status(400).json("error"))
